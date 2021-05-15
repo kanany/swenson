@@ -1,0 +1,168 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Coffee machines and custom coffee pods"
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Machines",
+      "description": "API for coffee machines in the system"
+    },
+    {
+      "name": "Pods",
+      "description": "API for coffee pods in the system"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/coffee_machines": {
+      "parameters": [
+        {
+          "name": "product_type",
+          "in": "query",
+          "required": false,
+          "description": "product type",
+          "type": "string",
+          "enum": ["COFFEE_MACHINE_LARGE", "COFFEE_MACHINE_SMALL", "ESPRESSO_MACHINE"]
+        },
+        {
+          "name": "water_line_compatible",
+          "in": "query",
+          "required": false,
+          "description": "water line compatible",
+          "type": "Boolean",
+          "enum": [true, false]
+        }
+      ],
+      "get": {
+        "tags": [
+          "Machines"
+        ],
+        "summary": "Get all coffee machines in system",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CoffeeMachines"
+            }
+          }
+        }
+      }
+    },
+    "/coffee_pods": {
+      "parameters": [
+        {
+          "name": "product_type",
+          "in": "query",
+          "required": false,
+          "description": "product type",
+          "type": "string",
+          "enum": ["COFFEE_POD_LARGE", "COFFEE_POD_SMALL", "ESPRESSO_POD"]
+        },
+        {
+          "name": "coffee_flavor",
+          "in": "query",
+          "required": false,
+          "description": "coffee flavor",
+          "type": "string",
+          "enum": ["COFFEE_FLAVOR_VANILLA", "COFFEE_FLAVOR_CARAMEL", "COFFEE_FLAVOR_PSL", "COFFEE_FLAVOR_MOCHA", "COFFEE_FLAVOR_HAZELNUT"]
+        },
+        {
+          "name": "pack_size",
+          "in": "query",
+          "required": false,
+          "description": "pack size",
+          "type": "Number",
+          "enum": [1,3,5,7]
+        }
+      ],
+      "get": {
+        "tags": [
+          "Pods"
+        ],
+        "summary": "Get all coffee pods in system",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CoffeePods"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "CoffeeMachine": {
+      "required": [
+        "_id"
+      ],
+      "properties": {
+        "_id": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "name": {
+          "type": "string"
+        },
+        "product_type": {
+          "type": "string",
+          "enum": ["COFFEE_MACHINE_LARGE", "COFFEE_MACHINE_SMALL", "ESPRESSO_MACHINE"]
+        },
+        "model": {
+          "type": "string",
+          "enum": ["BASE", "PREMIUM", "DELUXE"]
+        },
+        "water_line_compatible":{
+          "type": "Boolean"
+        }
+      }
+    },
+    "CoffeeMachines": {
+      "type": "array",
+      "$ref": "#/definitions/CoffeeMachine"
+    },
+    "CoffeePod": {
+      "required": [
+        "_id"
+      ],
+      "properties": {
+        "_id": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "name": {
+          "type": "string"
+        },
+        "product_type": {
+          "type": "string",
+          "enum": ["COFFEE_POD_LARGE", "COFFEE_POD_SMALL", "ESPRESSO_POD"]
+        },
+        "coffee_flavor": {
+          "type": "string",
+          "enum": ["COFFEE_FLAVOR_VANILLA", "COFFEE_FLAVOR_CARAMEL", "COFFEE_FLAVOR_PSL", "COFFEE_FLAVOR_MOCHA", "COFFEE_FLAVOR_HAZELNUT"]
+        },
+        "pack_size":{
+          "type": "Number",
+          "enum": [1,3,5,7]
+        }
+      }
+    },
+    "CoffeePods": {
+      "type": "array",
+      "$ref": "#/definitions/CoffeePod"
+    }
+
+  }
+}

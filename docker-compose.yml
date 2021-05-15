@@ -1,0 +1,26 @@
+version: "3"
+
+services:
+
+  backend:
+    build: ./backend
+    ports:
+      - 3000:3000
+    volumes:
+      - ./backend:/data
+    depends_on: 
+      - mongodb
+    environment:
+      WAIT_HOSTS: mongodb:27017    
+
+  mongodb:
+    image: mongo
+    ports:
+      - 27017:27017
+
+  mongo-seed:
+    build: ./mongo-seed
+    links:
+      - mongodb
+    environment:
+      WAIT_HOSTS: mongodb:27017  

@@ -1,0 +1,24 @@
+{
+  "name": "swenson_backend",
+  "version": "1.0.0",
+  "description": "reset API",
+  "main": "server.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Kanany",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^9.0.2",
+    "express": "^4.17.1",
+    "mongoose": "^5.12.9",
+    "swagger-ui-express": "^4.1.6"
+  },
+  "devDependencies": {
+    "mocha": "^8.4.0",
+    "should": "^13.2.3",
+    "supertest": "^6.1.3"
+  }
+}
