@@ -1,6 +1,8 @@
 FROM mongo
 
-COPY init.json /init.json
+COPY init_pods.json /init_pods.json
+
+COPY init_machines.json /init_machines.json
 
 ## Add the wait script to the image
 ADD https://github.com/ufoscout/docker-compose-wait/releases/download/2.5.1/wait /wait

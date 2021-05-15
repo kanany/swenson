@@ -3,11 +3,11 @@
 Run `docker-compose up` for a dev server inside the root dir. Navigate to `http://localhost:3000/`.
 
 ## Load the DB seed Manual "no need if launching using docker"
-cd ./mongo-seed && mongoimport --host localhost --db swenson --collection coffee_machines --type json --file ./init_machines.json --jsonArray && mongoimport --host localhost --db swenson --collection coffee_pods --type json --file ./init_pods.json --jsonArray
+`cd ./mongo-seed && mongoimport --host localhost --db swenson --collection coffee_machines --type json --file ./init_machines.json --jsonArray && mongoimport --host localhost --db swenson --collection coffee_pods --type json --file ./init_pods.json --jsonArray`
 
 ## Manual launching
 
-Navigate to backend dir and then, `npm start` 
+Navigate to backend dir and change the DB_HOST inside .env file to localhost then, `npm start`
 
 ## Running Nodejs unit tests
 
