@@ -2,19 +2,21 @@
 
 Run `docker-compose up` for a dev server inside the root dir. Navigate to `http://localhost:3000/`.
 
-## Running Nodejs unit tests
-
-Navigate to backend server while server is serving then run `npm test`.
+## Load the DB seed Manual "no need if launching using docker"
+cd ./mongo-seed && mongoimport --host localhost --db swenson --collection coffee_machines --type json --file ./init_machines.json --jsonArray && mongoimport --host localhost --db swenson --collection coffee_pods --type json --file ./init_pods.json --jsonArray
 
 ## Manual launching
 
 Navigate to backend dir and then, `npm start` 
 
+## Running Nodejs unit tests
+
+Navigate to backend server while server is serving then run `npm test`.
 
 
 ## The first task is to determine what the return array should look like for the certain cross-sell scenarios 
 
-please go to http://localhost:3000/api-docs/, I am using swagger for API docs each API will have a return example and you can try each param to see the return array 
+Go to http://localhost:3000/api-docs/, I'm using Swagger for API docs each API will have a return example and you can try each param to see the return array.
 
 All small machines
     o CM001
